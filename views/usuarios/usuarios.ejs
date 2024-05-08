@@ -1,0 +1,71 @@
+<%- include("../templates/header") %>
+
+  <!-- Main Content -->
+  <div id="content">
+    <h5 class="card-title">Gestión usuarios</h5>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-7">
+          <table class="table table-dark table-bordered table-hover">
+            <thead>
+              <tr>
+                <td>n°</td>
+                <td>Nombre</td>
+                <td>Correo</td>
+                <td>Rol</td>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (usuarios) { %> <% for(var i = 0; i < usuarios.length; i++) {
+              %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= usuarios[i].nombre %></td>
+                <td><%= usuarios[i].email %></td>
+                <td><%= usuarios[i].rol.nombre %></td>
+                <td class="d-flex gap-2">
+                  <a href="usuarios/update/<%= usuarios[i].id %>" class="btn btn-info">
+                    Edit
+                  </a>
+                  <a href="usuarios/delete/<%= usuarios[i].id %>" class="btn btn-danger">
+                    Delete
+                  </a>
+                </td>
+              </tr>
+              <% } %> <% } %>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-5">
+          <div class="card-body">
+            <form action="usuarios/add" method="POST">
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Fulano"
+                class="form-control mb-3"
+                autofocus
+              />
+              <input
+                type="email"
+                name="correo"
+                placeholder="correo@correo.com"
+                class="form-control mb-3"
+              />
+    
+              <button type="submit" class="btn btn-info">Guardar cliente</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- End of Main Content -->
+
+           
+
+   
+<%- include("../templates/footer") %>
+
+

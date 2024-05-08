@@ -1,0 +1,31 @@
+<%- include("../templates/header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="usuarios/update/<%= usuario.id %>" method="POST">
+          <input
+            type="text"
+            name="nombre"
+            value="<%= usuario.name %>"
+            placeholder="Fulano"
+            class="form-control mb-3"
+            autofocus
+          />
+          <input
+            type="email"
+            name="correo"
+            value="<%= usuario.correo%>"
+            placeholder="correo@correo.com"
+            class="form-control mb-3"
+          />
+
+          <button type="submit" class="btn btn-primary">Guargar usuario</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("../templates/footer") %>
