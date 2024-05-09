@@ -9,7 +9,7 @@ Usuario.init(
     id:           { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     nombre:       { type: DataTypes.STRING,  unique: true },
     correo:       { type: DataTypes.STRING,  allowNull: false },
-    password:     { type: DataTypes.STRING,  allowNull: false },
+    password:     { type: DataTypes.STRING,  allowNull: true },
     rol:          { type: DataTypes.INTEGER, references: { model: 'Rol', key: 'id' } },
   },
   {

@@ -4,11 +4,11 @@
   <div class="row">
     <div class="col-md-5 offset-md-3 card bg-dark">
       <div class="card-body">
-        <form action="usuarios/update/<%= usuario.id %>" method="POST">
+        <form action="../actualizar/<%= usuario.id %>" method="POST">
           <input
             type="text"
             name="nombre"
-            value="<%= usuario.name %>"
+            value="<%= usuario.nombre %>"
             placeholder="Fulano"
             class="form-control mb-3"
             autofocus

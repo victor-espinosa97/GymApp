@@ -1,10 +1,16 @@
-const { Usuario } = require('../models');
+const { Usuario, Rol } = require('../models');
 
 const obtenerUsuarios = async( req, res = response ) => {
 
     try {
-        const rows = await Usuario.findAll();
-        res.render("usuarios/usuarios", { usuarios: rows });
+        const rows = await Usuario.findAll({include: [
+            {
+              model: Rol,
+              as: 'rolAsociado',
+              attributes: ['id','nombre'],
+            }
+          ]});
+        res.render("usuarios/usuarios.ejs", { usuarios: rows });
     } catch (error) {
         console.log(error);
         
@@ -17,12 +23,10 @@ const obtenerUsuario = async( req, res = response ) => {
     try {
         const { id } = req.params;
     
-        const usuario = await Usuario.findByPk( id, {
-            attributes: { exclude: ['password'] }
-        });
-        if ( !usuario ) throw 'No existe un Usuario con el id ' + id;
+        const usuario = await Usuario.findByPk( id );
+        if ( !usuario ) throw 'No existe un usuario con el id ' + id;
 
-        res.render("usuarios/usuario_edit", {  usuario });
+        res.render("usuarios/usuario_edit.ejs", { usuario });
         
     } catch (error) {
         console.log(error);
@@ -37,13 +41,9 @@ const crearUsuario = async( req, res = response ) => {
         
         const { nombre, correo } = req.body;
 
+        await Usuario.create({ nombre, correo });
 
-        await Usuario.create({
-            nombre,
-            correo,
-        });
-
-        res.redirect("/");
+        res.redirect("/dashboard/usuarios");
     } catch (error) {
         console.log(error);
     }
@@ -65,7 +65,7 @@ const actualizarUsuario = async( req, res = response ) => {
         
         await currentUsuario.update( { ...newData } );
 
-        res.redirect("/");
+        res.redirect("/dashboard/usuarios");
     } catch (error) {
         console.log(error);
     }   
@@ -80,11 +80,9 @@ const deshabilitarUsuario = async( req, res = response ) => {
         const usuario = await Usuario.findByPk( id );
         if ( !usuario ) throw 'No existe un Usuario con el id ' + id;
     
-        await usuario.update({ estado: false });
-        if (result.affectedRows === 1) {
-            res.json({ message: "usuario eliminado" });
-        }
-        res.redirect("/");
+        await Usuario.destroy({ where: { id } });
+        
+        res.redirect("/dashboard/usuarios");
         
     } catch (error) {
         console.log(error);
