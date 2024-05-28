@@ -1,0 +1,49 @@
+<%- include("../templates/header") %>
+
+  <!-- Main Content -->
+  <div id="content">
+    <div class="container mt-5">
+      <h5 class="card-title">Editar membresias</h5>
+      <div class="row">
+            <div class="col-lg-8">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <td>Nombre de usaurio</td>
+                        <td>Correo</td>
+                        <td>Tipo de membresia</td>
+                        <td>Fecha de inicion</td>
+                        <td>Fecha de fin</td>
+                        <td>Valor pagado</td>
+                        <td>Dias</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% if (usuarios) { %> <% for(var i = 0; i < usuarios.length; i++) {
+                    %>
+                    <tr>
+                        <td><%= usuarios[i].usuario %></td>
+                        <td><%= usuarios[i].correo %></td>
+                        <td><%= usuarios[i].tipoMembresia %></td>
+                        <td><%= usuarios[i].fechaInicio %></td>
+                        <td><%= usuarios[i].fechaFin %></td>
+                        <td><%= usuarios[i].valor %></td>
+                        <td><%= usuarios[i].dias %></td>
+                        <td class="d-flex justify-content-around">
+                          <a href="obtenerMembresia/<%= usuarios[i].id %>" class="btn btn-info">
+                            Edit
+                          </a>
+                        </td>
+                    </tr>
+                    <% } %> <% } %>
+                    </tbody>
+                </table>
+            </div>
+      </div>
+    </div>
+
+  </div>
+
+<%- include("../templates/footer") %>
+
+

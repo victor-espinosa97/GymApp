@@ -1,0 +1,43 @@
+<%- include("../templates/header") %>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Membresías</title>
+    <link href="/dashboard/assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Listado de membresias</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre de usaurio</th>
+                        <th>Correo</th>
+                        <th>Tipo de membresia</th>
+                        <th>Fecha de inicion</th>
+                        <th>Fecha de fin</th>
+                        <th>Valor pagado</th>
+                        <th>Dias</th>
+                </tr>
+            </thead>
+            <% if (usuarios) { %> <% for(var i = 0; i < usuarios.length; i++) {
+                %>
+            <tbody>
+                <tr>
+                    <td><%= usuarios[i].usuario %></td>
+                        <td><%= usuarios[i].correo %></td>
+                        <td><%= usuarios[i].tipoMembresia %></td>
+                        <td><%= usuarios[i].fechaInicio %></td>
+                        <td><%= usuarios[i].fechaFin %></td>
+                        <td><%= usuarios[i].valor %></td>
+                        <td><%= usuarios[i].dias %></td>
+                </tr>
+                <% } %> <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<%- include("../templates/footer") %>

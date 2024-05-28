@@ -1,0 +1,119 @@
+<%- include('../templates/header') %>
+
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.0/dist/js/select2.min.js"></script>
+
+<div class="container">
+  <h1> Gestion de Membresías</h1>
+
+  <a href="membresias/membresiaList" class="btn btn-info">
+    Editar membresias
+  </a>
+  <a href="membresias/membresiasTable" class="btn btn-info">
+    Ver todas las membresias
+  </a>
+  <h1></h1>
+  <form action="membresias/guardarMembresia" method="POST">
+    <div class="form-group">
+      <label for="usuario">Buscar Usuario:</label>
+      <select class="form-control" id="usuario" name="usuario" style="width: 100%;">
+        <option value="">Seleccione un usuario</option>
+        <% usuarios.forEach(function(usuario) { %>
+          <option value="<%= usuario.id %>"><%= usuario.nombre %></option>
+        <% }); %>
+      </select>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Mensualidad</th>
+          <th>Ticket</th>
+          <th>Clase</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <!-- Mensualidad -->
+          <td>
+            <div class="form-group">
+              <label for="mensualidadFechaInicio">Fecha de Inicio:</label>
+              <input type="date" class="form-control" id="mensualidadFechaInicio" name="mensualidadFechaInicio" value="<%= new Date().toISOString().split('T')[0] %>">
+            </div>
+            <div class="form-group">
+              <label for="mensualidadFechaFinal">Fecha Final:</label>
+              <input type="date" class="form-control" id="mensualidadFechaFinal" name="mensualidadFechaFinal" value="<%= new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().split('T')[0] %>">
+            </div>
+            <div class="form-group">
+              <label for="mensualidadDias">Días:</label>
+              <input type="number" class="form-control" id="mensualidadDias" name="mensualidadDias" value="30">
+            </div>
+            <div class="form-group">
+              <label for="valorMen">Valor:</label>
+              <input type="number" class="form-control" id="valorMen" name="valorMen" value="0">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="mensualidadSeleccionar" name="tipoMembresia" value="mensualidad">
+              <label class="form-check-label" for="mensualidadSeleccionar">Seleccionar</label>
+            </div>
+          </td>
+          <!-- Ticket -->
+          <td>
+            <div class="form-group">
+              <label for="ticketFechaInicio">Fecha de Inicio:</label>
+              <input type="date" class="form-control" id="ticketFechaInicio" name="ticketFechaInicio" value="<%= new Date().toISOString().split('T')[0] %>">
+            </div>
+            <div class="form-group">
+              <label for="ticketFechaFinal">Fecha Final:</label>
+              <input type="date" class="form-control" id="ticketFechaFinal" name="ticketFechaFinal" value="<%= new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().split('T')[0] %>">
+            </div>
+            <div class="form-group">
+              <label for="ticketDias">Días:</label>
+              <input type="number" class="form-control" id="ticketDias" name="ticketDias" value="15">
+            </div>
+            <div class="form-group">
+              <label for="valorTik">Valor:</label>
+              <input type="number" class="form-control" id="valorTik" name="valorTik" value="0">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="ticketSeleccionar" name="tipoMembresia" value="ticket">
+              <label class="form-check-label" for="ticketSeleccionar">Seleccionar</label>
+            </div>
+          </td>
+          <!-- Clase -->
+          <td>
+            <div class="form-group">
+              <label for="claseFecha">Fecha:</label>
+              <input type="date" class="form-control" id="claseFecha" name="claseFecha" value="<%= new Date().toISOString().split('T')[0] %>">
+            </div>
+            <div class="form-group">
+              <label for="claseDia">Dia:</label>
+              <input type="number" class="form-control" id="claseDia" name="claseDia" value="1">
+            </div>
+            <div class="form-group">
+              <label for="valorCls">Valor:</label>
+              <input type="number" class="form-control" id="valorCls" name="valorCls" value="0">
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="claseSeleccionar" name="tipoMembresia" value="clase">
+              <label class="form-check-label" for="claseSeleccionar">Seleccionar</label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#usuario').select2({
+      placeholder: 'Seleccione un usuario',
+      allowClear: true
+    });
+  });
+</script>
+
+<%- include('../templates/footer') %>

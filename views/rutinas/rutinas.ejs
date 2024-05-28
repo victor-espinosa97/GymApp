@@ -1,0 +1,202 @@
+<%- include("../templates/header") %>
+
+<!-- Main Content -->
+<div id="content">
+  <div class="container mt-5">
+    <h3 class="card-title">Gestión de Rutinas</h3>
+    
+    <!-- Botones para seleccionar el tipo de rutina -->
+    <div class="row mb-3">
+      <div class="col-lg-6">
+        <button id="btnVolumen" class="btn btn-primary">Rutina de Volumen</button>
+        <button id="btnDefinicion" class="btn btn-primary">Rutina de Definición</button>
+      </div>
+    </div>
+    
+    <!-- Tabla para rutinas de volumen -->
+    <div id="tablaVolumen">
+      <h6><strong>RUTINA DE VOLUMEN</strong></h6>
+      
+      <!-- Tabla para grupos musculares pecho, hombros y bíceps -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Grupo Muscular</td>
+            <td>Ejercicio</td>
+            <td>Series</td>
+            <td>Repeticiones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (rutinas && rutinas.volumen) { %>
+            <% ["Pecho", "Hombros", "Bíceps"].forEach((grupoMuscular) => { %>
+              <% rutinas.volumen[grupoMuscular].forEach((ejercicio) => { %>
+                <tr>
+                  <td><%= grupoMuscular %></td>
+                  <td><%= ejercicio.ejercicio %></td>
+                  <td><%= ejercicio.series %></td>
+                  <td><%= ejercicio.repeticiones %></td>
+                </tr>
+              <% }); %>
+            <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+      
+      <!-- Tabla para grupos musculares pierna y pantorrilla -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Grupo Muscular</td>
+            <td>Ejercicio</td>
+            <td>Series</td>
+            <td>Repeticiones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (rutinas && rutinas.volumen) { %>
+            <% ["Piernas", "Pantorillas"].forEach((grupoMuscular) => { %>
+              <% rutinas.volumen[grupoMuscular].forEach((ejercicio) => { %>
+                <tr>
+                  <td><%= grupoMuscular %></td>
+                  <td><%= ejercicio.ejercicio %></td>
+                  <td><%= ejercicio.series %></td>
+                  <td><%= ejercicio.repeticiones %></td>
+                </tr>
+              <% }); %>
+            <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+      
+      <!-- Tabla para grupos musculares espalda, trapecios y tríceps -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Grupo Muscular</td>
+            <td>Ejercicio</td>
+            <td>Series</td>
+            <td>Repeticiones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (rutinas && rutinas.volumen) { %>
+            <% ["Espalda", "Trapecio", "Tríceps"].forEach((grupoMuscular) => { %>
+              <% rutinas.volumen[grupoMuscular].forEach((ejercicio) => { %>
+                <tr>
+                  <td><%= grupoMuscular %></td>
+                  <td><%= ejercicio.ejercicio %></td>
+                  <td><%= ejercicio.series %></td>
+                  <td><%= ejercicio.repeticiones %></td>
+                </tr>
+              <% }); %>
+            <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+      
+    </div>
+    
+    <!-- Tabla para rutinas de definición -->
+    <div id="tablaDefinicion" style="display: none;">
+      <h6><strong>RUTINA DE DEFINICIÓN</strong></h6>
+      
+      <!-- Tabla para grupos musculares pecho, hombros y bíceps -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Grupo Muscular</td>
+            <td>Ejercicio</td>
+            <td>Series</td>
+            <td>Repeticiones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (rutinas && rutinas.definicion) { %>
+            <% ["Pecho", "Hombros", "Bíceps"].forEach((grupoMuscular) => { %>
+              <% rutinas.definicion[grupoMuscular].forEach((ejercicio) => { %>
+                <tr>
+                  <td><%= grupoMuscular %></td>
+                  <td><%= ejercicio.ejercicio %></td>
+                  <td><%= ejercicio.series %></td>
+                  <td><%= ejercicio.repeticiones %></td>
+                </tr>
+              <% }); %>
+            <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+      
+      <!-- Tabla para grupos musculares pierna y pantorrilla -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Grupo Muscular</td>
+            <td>Ejercicio</td>
+            <td>Series</td>
+            <td>Repeticiones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (rutinas && rutinas.definicion) { %>
+            <% ["Piernas", "Pantorillas"].forEach((grupoMuscular) => { %>
+              <% rutinas.definicion[grupoMuscular].forEach((ejercicio) => { %>
+                <tr>
+                  <td><%= grupoMuscular %></td>
+                  <td><%= ejercicio.ejercicio %></td>
+                  <td><%= ejercicio.series %></td>
+                  <td><%= ejercicio.repeticiones %></td>
+                </tr>
+              <% }); %>
+            <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+      
+      <!-- Tabla para grupos musculares espalda, trapecios y tríceps -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>Grupo Muscular</td>
+            <td>Ejercicio</td>
+            <td>Series</td>
+            <td>Repeticiones</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (rutinas && rutinas.definicion) { %>
+            <% ["Espalda", "Trapecio", "Tríceps"].forEach((grupoMuscular) => { %>
+              <% rutinas.definicion[grupoMuscular].forEach((ejercicio) => { %>
+                <tr>
+                  <td><%= grupoMuscular %></td>
+                  <td><%= ejercicio.ejercicio %></td>
+                  <td><%= ejercicio.series %></td>
+                  <td><%= ejercicio.repeticiones %></td>
+                </tr>
+              <% }); %>
+            <% }); %>
+          <% } %>
+        </tbody>
+      </table>
+      
+    </div>
+    
+  </div>
+</div>
+<!-- End of Main Content -->
+
+<%- include("../templates/footer") %>
+
+<script>
+  // Función para mostrar la tabla de rutina de volumen y ocultar la de definición
+  document.getElementById("btnVolumen").addEventListener("click", function() {
+    document.getElementById("tablaVolumen").style.display = "block";
+    document.getElementById("tablaDefinicion").style.display = "none";
+  });
+  
+  // Función para mostrar la tabla de rutina de definición y ocultar la de volumen
+  document.getElementById("btnDefinicion").addEventListener("click", function() {
+    document.getElementById("tablaVolumen").style.display = "none";
+    document.getElementById("tablaDefinicion").style.display = "block";
+  });
+</script>

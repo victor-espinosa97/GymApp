@@ -14,6 +14,9 @@ class Server {
             auth:                  '/auth',
             dashboard:             '/dashboard',
             usuarios:              '/dashboard/usuarios',
+            rutinas:               '/dashboard/rutinas',
+            membresias:            '/dashboard/membresias',
+            
         } 
         // Métodos iniciales
         this.dbConnection();
@@ -57,6 +60,8 @@ class Server {
         this.app.use(this.paths.auth,       require('../routes/auth'));
         this.app.use(this.paths.dashboard,  require('../routes/dashboard'));
         this.app.use(this.paths.usuarios,   require('../routes/usuarios'));
+        this.app.use(this.paths.rutinas,    require('../routes/rutinas'));
+        this.app.use(this.paths.membresias, require('../routes/membresias'));
     }
 
 

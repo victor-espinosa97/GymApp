@@ -1,0 +1,77 @@
+<%- include("../templates/header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="../actualizarMembresia/<%= membresia.id %>" method="POST">
+            <input
+                type="text"
+                name="nombre"
+                value="<%= membresia.usuario %>"
+                placeholder="Usuario"
+                class="form-control mb-3"
+                disabled
+            />
+            <select class="form-control mb-3" id="tipoMembresia" name="tipoMembresia" onchange="validateMembershipType()">
+                <option value="mensualidad" <% if (membresia.tipoMembresia === "mensualidad") { %>selected<% } %>>Mensualidad</option>
+                <option value="ticket" <% if (membresia.tipoMembresia === "ticket") { %>selected<% } %>>Ticket</option>
+                <option value="clase" <% if (membresia.tipoMembresia === "clase") { %>selected<% } %>>Clase</option>
+            </select>
+            <input
+                type="date"
+                class="form-control mb-3"
+                placeholder="Fecha inicio"
+                name="fechaInicio"
+                id="fechaInicio"
+                value="<%= membresia.fechaInicio %>"
+            />
+            <input
+                type="date"
+                class="form-control mb-3"
+                placeholder="Fecha fin"
+                name="fechaFin"
+                id="fechaFin"
+                value="<%= membresia.fechaFin %>"
+            />
+            <input
+                type="number"
+                class="form-control mb-3"
+                placeholder="Dias"
+                name="dias"
+                value="<%= membresia.dias %>"
+            />
+            <input
+                type="number"
+                class="form-control mb-3"
+                placeholder="Valor"
+                name="valor"
+                value="<%= membresia.valor %>"
+            />
+          <button type="submit" class="btn btn-primary">Guardar usuario</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function validateMembershipType() {
+  var tipoMembresia = document.getElementById('tipoMembresia').value;
+  var fechaFinField = document.getElementById('fechaFin');
+  var fechaInicio = document.getElementById('fechaInicio').value;
+
+  if (tipoMembresia === 'clase') {
+    fechaFinField.value = fechaInicio;
+    fechaFinField.style.display = 'none';
+  } else {
+    fechaFinField.style.display = 'block';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  validateMembershipType();
+});
+</script>
+
+<%- include("../templates/footer") %>

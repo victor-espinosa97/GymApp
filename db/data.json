@@ -1,8 +1,8 @@
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE3MTUyMjE0MzMsImV4cCI6MTcxNTM5NDIzM30.hxaBMUNo4fSOjLVLrbtYB0ZWXroe_lmxCJdV7ZbyNdc",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE3MTY4NzIyNzcsImV4cCI6MTcxNzA0NTA3N30.lDBJQSmW-zTLkr-rPRRXmB_y780fWp41uRRTLDcvyLk",
     "usuario": {
         "id": 1,
-        "nombre": "Estudiante uniremington",
+        "nombre": "Estudiante uni",
         "correo": "estudiante@correo.com",
         "password": "$2a$10$7H0VfrOxmoYzXV.Ea9UBrOwJeEtVFUPOvlU1kv8lJWr/UnqT1VFuy",
         "rol": 1
